@@ -114,6 +114,10 @@ MonoBehaviour:
   - {fileID: -6423744535728436796, guid: bbe2cd3a45b6cb6478fac8470001e05c, type: 3}
   - {fileID: 3299252828184687098, guid: bbe2cd3a45b6cb6478fac8470001e05c, type: 3}
   - {fileID: 4006297673206733076, guid: bbe2cd3a45b6cb6478fac8470001e05c, type: 3}
+  danceSprites:
+  - {fileID: -4845309056716787497, guid: 9b152d90af3eca2408d4f14685fffd4e, type: 3}
+  - {fileID: 6343498510672356605, guid: 9b152d90af3eca2408d4f14685fffd4e, type: 3}
+  danceTimeout: 1
 --- !u!50 &5210932496059701442
 Rigidbody2D:
   serializedVersion: 4
