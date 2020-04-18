@@ -1,0 +1,37 @@
+setting:
+the year is 1988. people say disco is dead. prove them wrong with DISCO POWER
+spread the word of disco with your sweet dance moves
+
+procedurally generated nightclubs???
+
+player - disco man!
+
+
+three tiers of NPCs
+- punk
+- dorks
+- disco fans.... ???
+
+
+player moves:
+- dance - sends out music notes in 4 / 8 directions
+	- turn dorks into disco fans
+	- stuns punks
+	- drains disco power
+	
+... something for punks
+
+
+enemy moves:
+dorks - throw classical records - something less ambiguous? calculators? slide rules?
+	hit player - drain disco power
+	hit disco fans - turn to squares
+	
+punks - throw whisky bottles
+	hit player - drain disco power more
+	hit dorks - turn to punks
+	
+powerups:
+- cocktail - get at bar
+	- increases disco power
+- one up of some sort
