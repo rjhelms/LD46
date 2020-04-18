@@ -10,30 +10,18 @@ public enum Direction
     WEST
 }
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Actor
 {
-    [SerializeField]
-    private Direction direction = Direction.SOUTH;
 
-    [SerializeField]
-    private int frameIndex = 0;
-    [SerializeField]
-    private Sprite[] walkSprites; // create in order NESW
-
-    private int walkFrames;
-    private SpriteRenderer spriteRenderer;
-
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        walkFrames = walkSprites.Length / 4;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        int directionOffset = (int)direction * walkFrames;
-        spriteRenderer.sprite = walkSprites[directionOffset];
+        base.Update();
     }
+
+
 }
