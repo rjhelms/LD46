@@ -61,12 +61,7 @@ public class PlayerController : Actor
         }
     }
 
-    protected override void FireDanceProjectiles()
-    {
-        StartCoroutine(FireDanceProjectilesWait());
-    }
-
-    IEnumerator FireDanceProjectilesWait()
+    protected override IEnumerator FireDanceProjectilesWait()
     {
         yield return new WaitForSeconds(1 / frameTime[(int)ActorState.DANCE]);
         if (GameManager.instance.DiscoPower > danceCost)
@@ -82,7 +77,8 @@ public class PlayerController : Actor
             newProjectile.SetBaseVector(Vector2.down);
             GameManager.instance.RemovePower(danceCost);
             // TODO: dance sound
-        } else
+        }
+        else
         {
             state = ActorState.IDLE;
             frameIndex = 0;

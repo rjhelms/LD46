@@ -68,6 +68,7 @@ public class Actor : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         SetDirection();
         SetSprite();
     }
@@ -142,8 +143,38 @@ public class Actor : MonoBehaviour
         rigidbody2D.velocity = moveVector;
     }
 
-    protected virtual void FireDanceProjectiles()
+    protected virtual void DoDance()
+    {
+        state = ActorState.DANCE;
+        stateTimeoutTime = Time.time + danceTimeout;
+        moveVector = Vector2.zero;
+        nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.DANCE]);
+        FireDanceProjectiles();
+        frameIndex = 0;
+    }
+
+    protected virtual void DoAttack()
     {
 
+    }
+
+    protected virtual void FireDanceProjectiles()
+    {
+        StartCoroutine(FireDanceProjectilesWait());
+    }
+
+    protected virtual IEnumerator FireDanceProjectilesWait()
+    {
+        yield return new WaitForSeconds(1 / frameTime[(int)ActorState.DANCE]);
+        Projectile newProjectile;
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.up);
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.left);
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.right);
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.down);
+        // TODO: dance sound
     }
 }
