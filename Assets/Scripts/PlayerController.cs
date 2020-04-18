@@ -55,4 +55,23 @@ public class PlayerController : Actor
             state = ActorState.WALK;
         }
     }
+
+    protected override void FireDanceProjectiles()
+    {
+        StartCoroutine(FireDanceProjectilesWait());
+    }
+
+    IEnumerator FireDanceProjectilesWait()
+    {
+        yield return new WaitForSeconds(frameTime[(int)ActorState.DANCE]);
+        Projectile newProjectile;
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.up);
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.left);
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.right);
+        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(Vector2.down);
+    }
 }

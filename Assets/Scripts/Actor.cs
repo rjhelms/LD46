@@ -42,12 +42,20 @@ public class Actor : MonoBehaviour
     [SerializeField]
     protected float danceTimeout = 1.0f;
 
+    [SerializeField]
+    protected GameObject danceProjectilePrefab;
+    [SerializeField]
+    protected GameObject attackProjectilePrefab;
+    [SerializeField]
+    protected Transform projectileSpawnPoint;
+
     protected int walkFrames;
     protected float nextFrameTime;
     protected float stateTimeoutTime;
 
     protected SpriteRenderer spriteRenderer;
     protected new Rigidbody2D rigidbody2D;
+    
     // Start is called before the first frame update
     protected virtual void Start()
     {
