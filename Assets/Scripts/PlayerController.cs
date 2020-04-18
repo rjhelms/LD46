@@ -42,6 +42,7 @@ public class PlayerController : Actor
             moveVector = Vector2.zero;
             nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.DANCE]);
             FireDanceProjectiles();
+            frameIndex = 0;
             return;
         }
 
