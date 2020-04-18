@@ -134,10 +134,10 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0}
   frameTime:
   - 0
-  - 0.2
-  - 0.5
-  - 0.2
-  - 0.2
+  - 7
+  - 2
+  - 5
+  - 5
   direction: 0
   frameIndex: 0
   walkSprites:

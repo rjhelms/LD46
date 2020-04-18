@@ -62,7 +62,7 @@ public class Actor : MonoBehaviour
         walkFrames = walkSprites.Length / 4;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        nextFrameTime = Time.time + frameTime[(int)ActorState.WALK];
+        nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.WALK]);
     }
 
     // Update is called once per frame
@@ -115,7 +115,7 @@ public class Actor : MonoBehaviour
                 {
                     frameIndex++;
                     frameIndex %= walkFrames;
-                    nextFrameTime = Time.time + frameTime[(int)state];
+                    nextFrameTime = Time.time + (1 / frameTime[(int)state]);
                 }
                 directionOffset = (int)direction * walkFrames;
                 spriteRenderer.sprite = walkSprites[directionOffset + frameIndex];
@@ -125,7 +125,7 @@ public class Actor : MonoBehaviour
                 {
                     frameIndex++;
                     frameIndex %= danceSprites.Length;
-                    nextFrameTime = Time.time + frameTime[(int)state];
+                    nextFrameTime = Time.time + (1 / frameTime[(int)state]);
                 }
                 spriteRenderer.sprite = danceSprites[frameIndex];
                 break;

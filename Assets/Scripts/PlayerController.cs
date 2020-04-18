@@ -40,7 +40,7 @@ public class PlayerController : Actor
             state = ActorState.DANCE;
             stateTimeoutTime = Time.time + danceTimeout;
             moveVector = Vector2.zero;
-            nextFrameTime = Time.time + frameTime[(int)ActorState.DANCE];
+            nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.DANCE]);
             FireDanceProjectiles();
             return;
         }
@@ -67,7 +67,7 @@ public class PlayerController : Actor
 
     IEnumerator FireDanceProjectilesWait()
     {
-        yield return new WaitForSeconds(frameTime[(int)ActorState.DANCE]);
+        yield return new WaitForSeconds(1 / frameTime[(int)ActorState.DANCE]);
         if (GameManager.instance.DiscoPower > danceCost)
         {
             Projectile newProjectile;
