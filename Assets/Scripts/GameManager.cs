@@ -6,6 +6,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    [SerializeField]
+    private int discoPower;
+    public int DiscoPower
+    {
+        get { return discoPower; }
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -16,5 +23,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void RemovePower(int power)
+    {
+        discoPower -= power;
     }
 }

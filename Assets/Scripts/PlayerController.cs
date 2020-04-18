@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : Actor
 {
+    [SerializeField]
+    private int danceCost;
+    [SerializeField]
+    private int attackCost;
 
     protected override void Start()
     {
@@ -64,14 +68,24 @@ public class PlayerController : Actor
     IEnumerator FireDanceProjectilesWait()
     {
         yield return new WaitForSeconds(frameTime[(int)ActorState.DANCE]);
-        Projectile newProjectile;
-        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
-        newProjectile.SetBaseVector(Vector2.up);
-        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
-        newProjectile.SetBaseVector(Vector2.left);
-        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
-        newProjectile.SetBaseVector(Vector2.right);
-        newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
-        newProjectile.SetBaseVector(Vector2.down);
+        if (GameManager.instance.DiscoPower > danceCost)
+        {
+            Projectile newProjectile;
+            newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+            newProjectile.SetBaseVector(Vector2.up);
+            newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+            newProjectile.SetBaseVector(Vector2.left);
+            newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+            newProjectile.SetBaseVector(Vector2.right);
+            newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+            newProjectile.SetBaseVector(Vector2.down);
+            GameManager.instance.RemovePower(danceCost);
+            // TODO: dance sound
+        } else
+        {
+            state = ActorState.IDLE;
+            frameIndex = 0;
+            // TODO: dance fizzle sound
+        }
     }
 }
