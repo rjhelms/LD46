@@ -98,8 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25324b52dc8caad4b9aa09b7396d89fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 0
   moveSpeed: 30
   moveVector: {x: 0, y: 0}
+  frameTime:
+  - 0
+  - 0.2
+  - 0.5
+  - 0.2
+  - 0.2
   direction: 0
   frameIndex: 0
   walkSprites:
