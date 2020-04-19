@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 91222062300743933}
   m_Layer: 11
   m_Name: Bar
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
