@@ -1,9 +1,9 @@
 TO DO
-
 - powerups - spawnpoint (bar?)
-
 - terrain assets
 - balance tweaks
+	- NPC convert grace period
+	- improve projectile destruction
 - sounds
 - music
 - UI
