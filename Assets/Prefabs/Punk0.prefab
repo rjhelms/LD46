@@ -175,8 +175,8 @@ MonoBehaviour:
     type: 3}
   downgradeGameObject: {fileID: 0}
   danceChance: 0
-  attackChance: 0.2
-  actionFrequency: 1
+  attackChance: 0.3
+  actionFrequency: 1.5
   actionFrequencyVariance: 0.1
   canDance: 0
   canAttack: 1
@@ -276,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4676166217583209840}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4676166216664695223}

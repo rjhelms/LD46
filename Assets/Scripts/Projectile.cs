@@ -17,6 +17,9 @@ public class Projectile : MonoBehaviour
     private float moveRandomInterval;
 
     [SerializeField]
+    private bool hitsTerrain;
+
+    [SerializeField]
     private bool spin;
     [SerializeField]
     private float spinFrequency;
@@ -120,6 +123,11 @@ public class Projectile : MonoBehaviour
         {
             // TODO: play boost sound
             GameManager.instance.AddPower(playerHitBoost);
+            Destroy(gameObject);
+        }
+
+        if (hitsTerrain & collision.tag == "Terrain")
+        {
             Destroy(gameObject);
         }
     }

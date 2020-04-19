@@ -102,9 +102,11 @@ MonoBehaviour:
   currentMoveVector: {x: 0, y: 0}
   moveRandomness: 0
   moveRandomInterval: 0
+  hitsTerrain: 1
   spin: 1
   spinFrequency: 4
   playerHitCost: 15
+  playerHitBoost: 0
   upgradeLevel: -1
   downgradeLevel: 2
 --- !u!50 &2724806228340204583
@@ -143,4 +145,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 6
