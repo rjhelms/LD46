@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415c8e7e7cfb59047bb25985ee06e517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 5
-  speed: 60
+  lifespan: 3
+  speed: 80
   baseMoveVector: {x: 0, y: 0}
   currentMoveVector: {x: 0, y: 0}
   moveRandomness: 0
