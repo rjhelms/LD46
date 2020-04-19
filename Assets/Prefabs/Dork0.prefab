@@ -143,7 +143,8 @@ MonoBehaviour:
   AILevel: 2
   upgradeGameObject: {fileID: 8885962546537177201, guid: 52dbbbbf293a7cd45a9dcfae2c634a85,
     type: 3}
-  downgradeGameObject: {fileID: 0}
+  downgradeGameObject: {fileID: 4676166216664695221, guid: 8b59f9d06425d4443a9c41ce49df31ab,
+    type: 3}
   danceChance: 0
   attackChance: 0.2
   actionFrequency: 1
