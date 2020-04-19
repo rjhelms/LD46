@@ -236,7 +236,7 @@ MonoBehaviour:
   target: {fileID: 0}
   offset: {x: 0, y: 0, z: -200}
   interpMagnitude: 5
-  lerpAmount: 0.5
+  lerpAmount: 0.6
 --- !u!114 &7472189429119550737
 MonoBehaviour:
   m_ObjectHideFlags: 0
