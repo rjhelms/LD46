@@ -16,7 +16,12 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private float moveRandomInterval;
 
-    private GameObject sourceObject;
+    [SerializeField]
+    private bool spin;
+    [SerializeField]
+    private float spinFrequency;
+
+
 
     [SerializeField]
     private int upgradeLevel = -1;      // -1 means nothing
@@ -25,7 +30,9 @@ public class Projectile : MonoBehaviour
 
     private float nextRandomInterval;
     private float lifespanEnd;
+    private float nextSpinTime;
     private new Rigidbody2D rigidbody2D;
+    private GameObject sourceObject;
 
     public void SetBaseVector(Vector2 newVector)
     {
@@ -49,6 +56,10 @@ public class Projectile : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         baseMoveVector.Normalize();
         currentMoveVector = baseMoveVector;
+        if (spin)
+        {
+            nextSpinTime = Time.time + (1 / spinFrequency);
+        }
     }
 
     // Update is called once per frame
@@ -65,7 +76,11 @@ public class Projectile : MonoBehaviour
             currentMoveVector = baseMoveVector + randomVector;
             currentMoveVector.Normalize();
         }
-
+        if (spin & Time.time > nextSpinTime)
+        {
+            nextSpinTime = Time.time + (1 / spinFrequency);
+            transform.Rotate(0, 0, 90);
+        }
         rigidbody2D.velocity = currentMoveVector * speed;
     }
 

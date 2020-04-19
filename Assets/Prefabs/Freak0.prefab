@@ -162,13 +162,16 @@ MonoBehaviour:
   - {fileID: -4206227254734701615, guid: 2fcec3e60eac8384f8e3ac3cff4ac62e, type: 3}
   - {fileID: 7661716611417107359, guid: 2fcec3e60eac8384f8e3ac3cff4ac62e, type: 3}
   danceTimeout: 1
+  attackSprites: []
+  attackTimeout: 0.5
   danceProjectilePrefab: {fileID: 5607060341421939812, guid: a900694eaaeff31428cc38ba37ad2b98,
     type: 3}
   attackProjectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 3675417388116845664}
   AILevel: 3
   upgradeGameObject: {fileID: 0}
-  downgradeGameObject: {fileID: 0}
+  downgradeGameObject: {fileID: 3588768952485836638, guid: 404edc0c4e4bb334eba0b0f2eac2c6b6,
+    type: 3}
   danceChance: 0.75
   attackChance: 0
   actionFrequency: 0.2

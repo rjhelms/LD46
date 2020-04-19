@@ -41,6 +41,10 @@ public class Actor : MonoBehaviour
     protected Sprite[] danceSprites;
     [SerializeField]
     protected float danceTimeout = 1.0f;
+    [SerializeField]
+    protected Sprite[] attackSprites;
+    [SerializeField]
+    protected float attackTimeout = 0.5f;
 
     [SerializeField]
     protected GameObject danceProjectilePrefab;
@@ -131,6 +135,7 @@ public class Actor : MonoBehaviour
                 spriteRenderer.sprite = danceSprites[frameIndex];
                 break;
             case ActorState.ATTACK:
+                spriteRenderer.sprite = attackSprites[(int)direction];
                 break;
             case ActorState.HIT:
                 break;
@@ -155,7 +160,12 @@ public class Actor : MonoBehaviour
 
     protected virtual void DoAttack()
     {
-
+        state = ActorState.ATTACK;
+        stateTimeoutTime = Time.time + attackTimeout;
+        moveVector = Vector2.zero;
+        nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.ATTACK]);
+        frameIndex = 0;
+        FireAttackProjectiles();
     }
 
     protected virtual void FireDanceProjectiles()
@@ -163,6 +173,30 @@ public class Actor : MonoBehaviour
         StartCoroutine(FireDanceProjectilesWait());
     }
 
+    protected virtual void FireAttackProjectiles()
+    {
+        Vector2 baseVector = Vector2.zero;
+        switch (direction)
+        {
+            case Direction.NORTH:
+                baseVector = Vector2.up;
+                break;
+            case Direction.EAST:
+                baseVector = Vector2.right;
+                break;
+            case Direction.SOUTH:
+                baseVector = Vector2.down;
+                break;
+            case Direction.WEST:
+                baseVector = Vector2.left;
+                break;
+        }
+        Projectile newProjectile = Instantiate(attackProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
+        newProjectile.SetBaseVector(baseVector);
+        newProjectile.SetSourceObject(gameObject);
+        // TODO: attack sound
+
+    }
     protected virtual IEnumerator FireDanceProjectilesWait()
     {
         yield return new WaitForSeconds(1 / frameTime[(int)ActorState.DANCE]);

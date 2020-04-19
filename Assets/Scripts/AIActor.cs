@@ -119,7 +119,7 @@ public class AIActor : Actor
             }
         }
 
-        if (state == ActorState.DANCE)
+        if (state == ActorState.DANCE | state == ActorState.ATTACK)
         {
             if (Time.time > stateTimeoutTime)
             {
@@ -127,6 +127,7 @@ public class AIActor : Actor
                 frameIndex = 0;
             }
         }
+
         if (state != ActorState.DANCE & Time.time > nextActionTime)
         {
             nextActionTime = Time.time + (1 / (actionFrequency * Random.Range(1 - actionFrequencyVariance, 1 + actionFrequencyVariance)));
@@ -153,6 +154,8 @@ public class AIActor : Actor
     protected override void DoAttack()
     {
         base.DoAttack();
+        nextActionTime = Time.time + (1 / (actionFrequency * Random.Range(1 - actionFrequencyVariance, 1 + actionFrequencyVariance)));
+        nextActionTime += attackTimeout;
         Debug.Log("attacking");
     }
 
