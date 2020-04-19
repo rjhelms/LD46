@@ -16,7 +16,7 @@ public class PlayerController : Actor
 
     protected override void Update()
     {
-        if (state == ActorState.DANCE)
+        if (state == ActorState.DANCE | state == ActorState.ATTACK)
         {
             if (Time.time > stateTimeoutTime)
             {
@@ -25,7 +25,7 @@ public class PlayerController : Actor
             }
         }
 
-        if (state != ActorState.DANCE)
+        if (state != ActorState.DANCE & state != ActorState.ATTACK)
         {
             DoInput();
         }
@@ -43,6 +43,17 @@ public class PlayerController : Actor
             nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.DANCE]);
             FireDanceProjectiles();
             frameIndex = 0;
+            return;
+        }
+
+        if (Input.GetButton("Fire2"))
+        {
+            state = ActorState.ATTACK;
+            stateTimeoutTime = Time.time + attackTimeout;
+            moveVector = Vector2.zero;
+            nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.ATTACK]);
+            frameIndex = 0;
+            FireAttackProjectiles();
             return;
         }
 

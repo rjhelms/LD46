@@ -138,7 +138,7 @@ MonoBehaviour:
   - 2
   - 5
   - 5
-  direction: 0
+  direction: 2
   frameIndex: 0
   walkSprites:
   - {fileID: -5539745613326238733, guid: bbe2cd3a45b6cb6478fac8470001e05c, type: 3}
@@ -161,9 +161,16 @@ MonoBehaviour:
   - {fileID: -4845309056716787497, guid: 9b152d90af3eca2408d4f14685fffd4e, type: 3}
   - {fileID: 6343498510672356605, guid: 9b152d90af3eca2408d4f14685fffd4e, type: 3}
   danceTimeout: 1
+  attackSprites:
+  - {fileID: -8265023169124035844, guid: 849d2beb35434da4086e691614c76322, type: 3}
+  - {fileID: 5597986982542473511, guid: 849d2beb35434da4086e691614c76322, type: 3}
+  - {fileID: -7283863594628648661, guid: 849d2beb35434da4086e691614c76322, type: 3}
+  - {fileID: -107636597192003056, guid: 849d2beb35434da4086e691614c76322, type: 3}
+  attackTimeout: 0.5
   danceProjectilePrefab: {fileID: 6615303305270639059, guid: 63ff2518be2243b41838f5b7a92fbb64,
     type: 3}
-  attackProjectilePrefab: {fileID: 0}
+  attackProjectilePrefab: {fileID: 8379323906886545021, guid: f9581187e7da6b9469bec73c7c2adb2c,
+    type: 3}
   projectileSpawnPoint: {fileID: 34872535}
   danceCost: 5
   attackCost: 0
