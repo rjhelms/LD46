@@ -39,6 +39,7 @@ public class Projectile : MonoBehaviour
     private float nextSpinTime;
     private new Rigidbody2D rigidbody2D;
     private GameObject sourceObject;
+    private int startFrames = 0;
 
     public void SetBaseVector(Vector2 newVector)
     {
@@ -54,6 +55,7 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startFrames = 0;
         lifespanEnd = Time.time + lifespan;
         if (moveRandomness > 0)
         {
@@ -90,6 +92,12 @@ public class Projectile : MonoBehaviour
         rigidbody2D.velocity = currentMoveVector * speed;
     }
 
+    private void FixedUpdate()
+    {
+        if (startFrames < 3)
+            startFrames++;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == sourceObject)
@@ -103,14 +111,13 @@ public class Projectile : MonoBehaviour
             if (actor.AILevel == upgradeLevel)
             {
                 actor.Upgrade();
-                Destroy(gameObject);
                 return;
             } else if (downgradeLevel >= 0 & actor.AILevel >= downgradeLevel)
             {
                 actor.Downgrade();
-                Destroy(gameObject);
                 return;
             }
+            Destroy(gameObject);
         }
 
         if (collision.tag == "Player" & playerHitCost > 0)
@@ -128,7 +135,8 @@ public class Projectile : MonoBehaviour
 
         if (hitsTerrain & collision.tag == "Terrain")
         {
-            Destroy(gameObject);
+            if (startFrames >= 3)
+                Destroy(gameObject);
         }
     }
 }
