@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ee57da98d926e479b0d305b23cd3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: 0
+  powerUp: 100
   mansUp: 1
   scoreUp: 1000
   audioClip: {fileID: 0}
