@@ -196,4 +196,22 @@ public class AIActor : Actor
             // TODO: play downgrade sound
         }
     }
+
+    protected void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player " | collision.gameObject.tag == "Enemy" | collision.gameObject.tag == "Friendly")
+        {
+            if (path != null)
+            {
+                path = null;
+                Debug.Log("Bump, abandoning path");
+                // only affect movement & state if walking - otherwise this will get cleared on next timeout
+                if (state == ActorState.WALK)
+                {
+                    state = ActorState.IDLE;
+                    moveVector = Vector2.zero;
+                }
+            }
+        }
+    }
 }
