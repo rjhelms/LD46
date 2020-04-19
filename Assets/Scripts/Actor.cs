@@ -141,7 +141,13 @@ public class Actor : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        rigidbody2D.velocity = moveVector;
+        if (GameManager.instance.IsRunning)
+        {
+            rigidbody2D.velocity = moveVector;
+        } else
+        {
+            rigidbody2D.velocity = Vector2.zero;
+        }
     }
 
     protected virtual void DoDance()

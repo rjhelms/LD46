@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+
+    public GameObject[] levels;
     [SerializeField]
     private int discoPower;
     [SerializeField]
@@ -15,15 +18,21 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private int punks;
-
+    [SerializeField]
+    private int level = 1;
     [SerializeField]
     private int dorks;
+
+    [SerializeField]
+    private bool isRunning;
 
     public int DiscoPower { get => discoPower; }
     public int Mans { get => mans; }
     public int Score { get => score; }
     public int Punks { get => punks; }
     public int Dorks { get => dorks; }
+    public int Level { get => level; }
+    public bool IsRunning { get => isRunning; }
 
     private bool isWinning;
     private bool isLosing;
@@ -38,6 +47,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void InstantiateLevel()
+    {
+        Instantiate(levels[level - 1], Vector3.zero, Quaternion.identity);
+        isWinning = false;
+        AstarPath.active.Scan();
+        isRunning = true;
     }
 
     public void RemovePower(int power)
@@ -96,12 +113,22 @@ public class GameManager : MonoBehaviour
         {
             AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.levelClearSound);
             isWinning = true;
+            isRunning = false;
+            level++;
+            if (level > levels.Length)
+            {
+                Debug.Log("You win!");
+            } else
+            {
+                SceneManager.LoadScene("Main");
+            }
+
         }
     }
 
     public void Lose()
     {
-        Time.timeScale = 0;
+        isRunning = false;
         AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerLoseSound);
     }
 }

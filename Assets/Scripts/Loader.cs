@@ -17,5 +17,6 @@ public class Loader : MonoBehaviour
         {
             Instantiate(audioManager);
         }
+        GameManager.instance.InstantiateLevel();
     }
 }

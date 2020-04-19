@@ -70,81 +70,85 @@ public class AIActor : Actor
 
     protected override void Update()
     {
-        if (Time.time > nextSearchPathTime & state == ActorState.IDLE & path == null & waitingForPath == false)
+        if (GameManager.instance.IsRunning)
         {
-            nextSearchPathTime = Time.time + (1 / searchPathFrequency);
-            if (Random.value < searchPathChance)
+            if (Time.time > nextSearchPathTime & state == ActorState.IDLE & path == null & waitingForPath == false)
             {
-                Vector2 targetPosition = (Vector2)transform.position + (Random.insideUnitCircle.normalized * randomPathDistance);
-                seeker.StartPath((Vector2)transform.position, targetPosition);
-            }
-        }
-        if (path != null & (state == ActorState.IDLE | state == ActorState.WALK))
-        {
-            float distanceToWaypoint;
-            reachedEndOfPath = false;
-            while (true)
-            {
-                distanceToWaypoint = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
-                if (distanceToWaypoint < nextWaypointDistance)
+                nextSearchPathTime = Time.time + (1 / searchPathFrequency);
+                if (Random.value < searchPathChance)
                 {
-                    if (currentWaypoint + 1 < path.vectorPath.Count)
+                    Vector2 targetPosition = (Vector2)transform.position + (Random.insideUnitCircle.normalized * randomPathDistance);
+                    seeker.StartPath((Vector2)transform.position, targetPosition);
+                }
+            }
+            if (path != null & (state == ActorState.IDLE | state == ActorState.WALK))
+            {
+                float distanceToWaypoint;
+                reachedEndOfPath = false;
+                while (true)
+                {
+                    distanceToWaypoint = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
+                    if (distanceToWaypoint < nextWaypointDistance)
                     {
-                        currentWaypoint++;
+                        if (currentWaypoint + 1 < path.vectorPath.Count)
+                        {
+                            currentWaypoint++;
+                        }
+                        else
+                        {
+                            reachedEndOfPath = true;
+                            break;
+                        }
                     }
                     else
                     {
-                        reachedEndOfPath = true;
                         break;
                     }
                 }
+
+                if (!reachedEndOfPath)
+                {
+                    Vector2 direction = (path.vectorPath[currentWaypoint] - transform.position);
+                    direction.Normalize();
+                    moveVector = direction * moveSpeed;
+                }
                 else
                 {
-                    break;
+                    path = null;
+                    moveVector = Vector2.zero;
+                }
+
+                if (moveVector.magnitude == 0)
+                {
+                    state = ActorState.IDLE;
+                }
+                else
+                {
+                    state = ActorState.WALK;
                 }
             }
 
-            if (!reachedEndOfPath)
+            if (state == ActorState.DANCE | state == ActorState.ATTACK)
             {
-                Vector2 direction = (path.vectorPath[currentWaypoint] - transform.position);
-                direction.Normalize();
-                moveVector = direction * moveSpeed;
-            }
-            else
-            {
-                path = null;
-                moveVector = Vector2.zero;
+                if (Time.time > stateTimeoutTime)
+                {
+                    state = ActorState.IDLE;
+                    frameIndex = 0;
+                }
             }
 
-            if (moveVector.magnitude == 0)
+            if (state != ActorState.DANCE & Time.time > nextActionTime)
             {
-                state = ActorState.IDLE;
-            }
-            else
-            {
-                state = ActorState.WALK;
-            }
-        }
-
-        if (state == ActorState.DANCE | state == ActorState.ATTACK)
-        {
-            if (Time.time > stateTimeoutTime)
-            {
-                state = ActorState.IDLE;
-                frameIndex = 0;
-            }
-        }
-
-        if (state != ActorState.DANCE & Time.time > nextActionTime)
-        {
-            nextActionTime = Time.time + (1 / (actionFrequency * Random.Range(1 - actionFrequencyVariance, 1 + actionFrequencyVariance)));
-            float roll = Random.value;
-            if (canDance & (roll <= danceChance))
-            {
-                DoDance();
-            } else if (canAttack & (danceChance < roll) & (roll <= attackChance))
-            {
-                DoAttack();
+                nextActionTime = Time.time + (1 / (actionFrequency * Random.Range(1 - actionFrequencyVariance, 1 + actionFrequencyVariance)));
+                float roll = Random.value;
+                if (canDance & (roll <= danceChance))
+                {
+                    DoDance();
+                }
+                else if (canAttack & (danceChance < roll) & (roll <= attackChance))
+                {
+                    DoAttack();
+                }
             }
         }
 

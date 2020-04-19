@@ -25,37 +25,40 @@ public class PlayerController : Actor
 
     protected override void Update()
     {
-        if (state == ActorState.DANCE | state == ActorState.ATTACK)
+        if (GameManager.instance.IsRunning)
         {
-            if (Time.time > stateTimeoutTime)
+            if (state == ActorState.DANCE | state == ActorState.ATTACK)
             {
-                state = ActorState.IDLE;
-                frameIndex = 0;
+                if (Time.time > stateTimeoutTime)
+                {
+                    state = ActorState.IDLE;
+                    frameIndex = 0;
+                }
             }
-        }
 
-        if (state != ActorState.DANCE & state != ActorState.ATTACK)
-        {
-            DoInput();
-        }
-
-        if (hit)
-        {
-            if (Time.time > nextFlashTime)
+            if (state != ActorState.DANCE & state != ActorState.ATTACK)
             {
-                spriteRenderer.enabled = !spriteRenderer.enabled;
-                nextFlashTime = Time.time + flashTime;
+                DoInput();
             }
-            if (Time.time > endHitTime)
-            {
-                hit = false;
-                spriteRenderer.enabled = true;
-            }
-        }
 
-        if (GameManager.instance.Punks + GameManager.instance.Dorks == 0)
-        {
-            GameManager.instance.Win();
+            if (hit)
+            {
+                if (Time.time > nextFlashTime)
+                {
+                    spriteRenderer.enabled = !spriteRenderer.enabled;
+                    nextFlashTime = Time.time + flashTime;
+                }
+                if (Time.time > endHitTime)
+                {
+                    hit = false;
+                    spriteRenderer.enabled = true;
+                }
+            }
+
+            if (GameManager.instance.Punks + GameManager.instance.Dorks == 0)
+            {
+                GameManager.instance.Win();
+            }
         }
         base.Update();
     }

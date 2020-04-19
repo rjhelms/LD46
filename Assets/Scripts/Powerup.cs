@@ -32,14 +32,17 @@ public class Powerup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isCollected & collision.gameObject.tag == "Player")
+        if (GameManager.instance.IsRunning)
         {
-            AudioManager.instance.soundSource.PlayOneShot(audioClip);
-            GameManager.instance.AddPower(powerUp);
-            GameManager.instance.AddMans(mansUp);
-            GameManager.instance.AddScore(scoreUp);
-            isCollected = true;
-            Destroy(gameObject);
+            if (!isCollected & collision.gameObject.tag == "Player")
+            {
+                AudioManager.instance.soundSource.PlayOneShot(audioClip);
+                GameManager.instance.AddPower(powerUp);
+                GameManager.instance.AddMans(mansUp);
+                GameManager.instance.AddScore(scoreUp);
+                isCollected = true;
+                Destroy(gameObject);
+            }
         }
     }
 }

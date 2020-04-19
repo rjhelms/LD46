@@ -100,43 +100,47 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == sourceObject)
+        if (GameManager.instance.IsRunning)
         {
-            return;
-        }
-
-        AIActor actor = collision.GetComponent<AIActor>();
-        if (actor)
-        {
-            if (actor.AILevel == upgradeLevel)
+            if (collision.gameObject == sourceObject)
             {
-                actor.Upgrade();
-                return;
-            } else if (downgradeLevel >= 0 & actor.AILevel >= downgradeLevel)
-            {
-                actor.Downgrade();
                 return;
             }
-            Destroy(gameObject);
-        }
 
-        if (collision.tag == "Player" & playerHitCost > 0)
-        {
-            collision.GetComponent<PlayerController>().Hit(playerHitCost);
-            Destroy(gameObject);
-        }
-
-        if (collision.tag == "Player" & playerHitBoost > 0)
-        {
-            AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerBoost);
-            GameManager.instance.AddPower(playerHitBoost);
-            Destroy(gameObject);
-        }
-
-        if (hitsTerrain & collision.tag == "Terrain")
-        {
-            if (startFrames >= 3)
+            AIActor actor = collision.GetComponent<AIActor>();
+            if (actor)
+            {
+                if (actor.AILevel == upgradeLevel)
+                {
+                    actor.Upgrade();
+                    return;
+                }
+                else if (downgradeLevel >= 0 & actor.AILevel >= downgradeLevel)
+                {
+                    actor.Downgrade();
+                    return;
+                }
                 Destroy(gameObject);
+            }
+
+            if (collision.tag == "Player" & playerHitCost > 0)
+            {
+                collision.GetComponent<PlayerController>().Hit(playerHitCost);
+                Destroy(gameObject);
+            }
+
+            if (collision.tag == "Player" & playerHitBoost > 0)
+            {
+                AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerBoost);
+                GameManager.instance.AddPower(playerHitBoost);
+                Destroy(gameObject);
+            }
+
+            if (hitsTerrain & collision.tag == "Terrain")
+            {
+                if (startFrames >= 3)
+                    Destroy(gameObject);
+            }
         }
     }
 }
