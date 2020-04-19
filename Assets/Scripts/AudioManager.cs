@@ -9,6 +9,16 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource soundSource;
 
+    public AudioClip playerBoost;
+    public AudioClip upgradeSound;
+    public AudioClip downgradeSound;
+    public AudioClip playerHitSound;
+    public AudioClip danceSound;
+    public AudioClip danceFizzleSound;
+    public AudioClip playerThrowSound;
+    public AudioClip playerLoseSound;
+    public AudioClip levelClearSound;
+
     private void Awake()
     {
         if (instance == null)

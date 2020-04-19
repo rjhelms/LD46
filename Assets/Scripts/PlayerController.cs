@@ -52,6 +52,11 @@ public class PlayerController : Actor
                 spriteRenderer.enabled = true;
             }
         }
+
+        if (GameManager.instance.Punks + GameManager.instance.Dorks == 0)
+        {
+            GameManager.instance.Win();
+        }
         base.Update();
     }
     
@@ -79,9 +84,9 @@ public class PlayerController : Actor
                 frameIndex = 0;
                 FireAttackProjectiles();
                 GameManager.instance.RemovePower(attackCost);
+                AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerThrowSound);
                 return;
             }
-            // TODO: attack fizzle sound
         }
 
         Vector2 inputVector = Vector2.zero;
@@ -118,13 +123,13 @@ public class PlayerController : Actor
             newProjectile.SetBaseVector(Vector2.down);
             newProjectile.SetSourceObject(gameObject);
             GameManager.instance.RemovePower(danceCost);
-            // TODO: dance sound
+            AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.danceSound);
         }
         else
         {
             state = ActorState.IDLE;
             frameIndex = 0;
-            // TODO: dance fizzle sound
+            AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.danceFizzleSound);
         }
     }
 
@@ -132,7 +137,7 @@ public class PlayerController : Actor
     {
         if (!hit)
         {
-            // TODO: play player hit sound
+            AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerHitSound);
             hit = true;
             nextFlashTime = Time.time + flashTime;
             endHitTime = Time.time + hitTimeout;

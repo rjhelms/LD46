@@ -1,7 +1,6 @@
 TO DO
 
 - sounds
-- music
 - UI
 - balance tweaks
 	- overall speedup
@@ -18,6 +17,20 @@ DONE
 - NPC convert grace period
 - improve projectile destruction
 - fix UI scaling
+- music
+
+
+sounds:
+
+- one up - done 
+- power up - done
+- NPC upgrade - done
+- NPC downgrade - done
+- player hit - done
+- lose - done
+- attack - done
+- dance - done
+- dance fizzle - done
 
 --------------------------------------
 

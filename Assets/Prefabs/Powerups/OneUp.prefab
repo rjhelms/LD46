@@ -137,4 +137,4 @@ MonoBehaviour:
   powerUp: 100
   mansUp: 1
   scoreUp: 1000
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: b8263e2d3a68bc74dbfad23b672ff6dd, type: 3}

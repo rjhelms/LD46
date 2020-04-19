@@ -34,7 +34,7 @@ public class Powerup : MonoBehaviour
     {
         if (!isCollected & collision.gameObject.tag == "Player")
         {
-            // todo: play audio
+            AudioManager.instance.soundSource.PlayOneShot(audioClip);
             GameManager.instance.AddPower(powerUp);
             GameManager.instance.AddMans(mansUp);
             GameManager.instance.AddScore(scoreUp);

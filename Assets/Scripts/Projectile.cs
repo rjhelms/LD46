@@ -128,7 +128,7 @@ public class Projectile : MonoBehaviour
 
         if (collision.tag == "Player" & playerHitBoost > 0)
         {
-            // TODO: play boost sound
+            AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerBoost);
             GameManager.instance.AddPower(playerHitBoost);
             Destroy(gameObject);
         }

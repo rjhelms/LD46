@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -170,7 +170,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9a83b03c44a4f1d42b652bf1490060c6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -301,3 +301,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1774749910840917693}
   soundSource: {fileID: 1774749910727750962}
+  playerBoost: {fileID: 8300000, guid: 82c92a4132438a84da182ef7c9611aba, type: 3}
+  upgradeSound: {fileID: 8300000, guid: 7e7bed544e1858c4f9d55b8dd0a68d48, type: 3}
+  downgradeSound: {fileID: 8300000, guid: df7c3d36747d647478c81e9bb531f4aa, type: 3}
+  playerHitSound: {fileID: 8300000, guid: 957ef3988e615a844a172a725e65e642, type: 3}
+  danceSound: {fileID: 8300000, guid: d1b2a0037a91dbc4b8681a5c68fb89bc, type: 3}
+  danceFizzleSound: {fileID: 8300000, guid: aa18ebcd650036549a502f3d9aae3752, type: 3}
+  playerThrowSound: {fileID: 8300000, guid: aea6913825f23254e93cf17e2f9d027b, type: 3}
+  playerLoseSound: {fileID: 8300000, guid: b296ca3803b4e5442873ab6ac940a2d7, type: 3}
+  levelClearSound: {fileID: 8300000, guid: c3770a386208a7643a50fd9c4db2cc6f, type: 3}

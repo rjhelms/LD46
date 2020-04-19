@@ -190,7 +190,6 @@ public class Actor : MonoBehaviour
         Projectile newProjectile = Instantiate(attackProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
         newProjectile.SetBaseVector(baseVector);
         newProjectile.SetSourceObject(gameObject);
-        // TODO: attack sound
 
     }
     protected virtual IEnumerator FireDanceProjectilesWait()
@@ -209,6 +208,5 @@ public class Actor : MonoBehaviour
         newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
         newProjectile.SetBaseVector(Vector2.down);
         newProjectile.SetSourceObject(gameObject);
-        // TODO: dance sound
     }
 }

@@ -181,9 +181,12 @@ public class AIActor : Actor
             if (isChanged)
                 return;
             isChanged = true;
+            if (spriteRenderer.isVisible)
+            {
+                AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.upgradeSound);
+            }
             Instantiate(upgradeGameObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
-            // TODO: play upgrade sound
         }
     }
 
@@ -194,9 +197,12 @@ public class AIActor : Actor
             if (isChanged)
                 return;
             isChanged = true;
+            if (spriteRenderer.isVisible)
+            {
+                AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.downgradeSound);
+            }
             Instantiate(downgradeGameObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
-            // TODO: play downgrade sound
         }
     }
 

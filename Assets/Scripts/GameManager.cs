@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     public int DiscoPower { get => discoPower; }
     public int Mans { get => mans; }
     public int Score { get => score; }
+    public int Punks { get => punks; }
+    public int Dorks { get => dorks; }
+
+    private bool isWinning;
+    private bool isLosing;
 
     private void Awake()
     {
@@ -40,8 +45,7 @@ public class GameManager : MonoBehaviour
         discoPower -= power;
         if (discoPower < 0)
         {
-            Debug.Log("Game over");
-            Debug.Break();
+            Lose();
         }
     }
 
@@ -84,5 +88,20 @@ public class GameManager : MonoBehaviour
     {
         if (dorks > 0)
             dorks--;
+    }
+
+    public void Win()
+    {
+        if (!isWinning)
+        {
+            AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.levelClearSound);
+            isWinning = true;
+        }
+    }
+
+    public void Lose()
+    {
+        Time.timeScale = 0;
+        AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerLoseSound);
     }
 }
