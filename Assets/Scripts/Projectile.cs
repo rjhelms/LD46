@@ -102,7 +102,7 @@ public class Projectile : MonoBehaviour
                 actor.Upgrade();
                 Destroy(gameObject);
                 return;
-            } else if (actor.AILevel == downgradeLevel)
+            } else if (downgradeLevel >= 0 & actor.AILevel >= downgradeLevel)
             {
                 actor.Downgrade();
                 Destroy(gameObject);
