@@ -21,7 +21,10 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private float spinFrequency;
 
-
+    [SerializeField]
+    private int playerHitCost;
+    [SerializeField]
+    private int playerHitBoost;
 
     [SerializeField]
     private int upgradeLevel = -1;      // -1 means nothing
@@ -98,11 +101,26 @@ public class Projectile : MonoBehaviour
             {
                 actor.Upgrade();
                 Destroy(gameObject);
+                return;
             } else if (actor.AILevel == downgradeLevel)
             {
                 actor.Downgrade();
                 Destroy(gameObject);
+                return;
             }
+        }
+
+        if (collision.tag == "Player" & playerHitCost > 0)
+        {
+            collision.GetComponent<PlayerController>().Hit(playerHitCost);
+            Destroy(gameObject);
+        }
+
+        if (collision.tag == "Player" & playerHitBoost > 0)
+        {
+            // TODO: play boost sound
+            GameManager.instance.AddPower(playerHitBoost);
+            Destroy(gameObject);
         }
     }
 }

@@ -8,6 +8,15 @@ public class PlayerController : Actor
     private int danceCost;
     [SerializeField]
     private int attackCost;
+    [SerializeField]
+    private float hitTimeout;
+    [SerializeField]
+    private float flashTime;
+    [SerializeField]
+    private bool hit;
+
+    private float nextFlashTime;
+    private float endHitTime;
 
     protected override void Start()
     {
@@ -30,6 +39,19 @@ public class PlayerController : Actor
             DoInput();
         }
 
+        if (hit)
+        {
+            if (Time.time > nextFlashTime)
+            {
+                spriteRenderer.enabled = !spriteRenderer.enabled;
+                nextFlashTime = Time.time + flashTime;
+            }
+            if (Time.time > endHitTime)
+            {
+                hit = false;
+                spriteRenderer.enabled = true;
+            }
+        }
         base.Update();
     }
     
@@ -103,6 +125,19 @@ public class PlayerController : Actor
             state = ActorState.IDLE;
             frameIndex = 0;
             // TODO: dance fizzle sound
+        }
+    }
+
+    public void Hit(int powerCost)
+    {
+        if (!hit)
+        {
+            // TODO: play player hit sound
+            hit = true;
+            nextFlashTime = Time.time + flashTime;
+            endHitTime = Time.time + hitTimeout;
+            spriteRenderer.enabled = false;
+            GameManager.instance.RemovePower(powerCost);
         }
     }
 }

@@ -28,5 +28,19 @@ public class GameManager : MonoBehaviour
     public void RemovePower(int power)
     {
         discoPower -= power;
+        if (discoPower < 0)
+        {
+            Debug.Log("Game over");
+            Debug.Break();
+        }
+    }
+
+    public void AddPower(int power)
+    {
+        discoPower += power;
+        if (discoPower > 100)
+        {
+            discoPower = 100;
+        }
     }
 }

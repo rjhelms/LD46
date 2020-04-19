@@ -16,7 +16,6 @@ public enum ActorState
     WALK = 1,
     DANCE = 2,
     ATTACK = 3,
-    HIT = 4,
 }
 
 public class Actor : MonoBehaviour
@@ -135,8 +134,6 @@ public class Actor : MonoBehaviour
                 break;
             case ActorState.ATTACK:
                 spriteRenderer.sprite = attackSprites[(int)direction];
-                break;
-            case ActorState.HIT:
                 break;
         }
 

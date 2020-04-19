@@ -105,6 +105,7 @@ MonoBehaviour:
   moveRandomInterval: 0
   spin: 1
   spinFrequency: 4
+  playerHitCost: 5
   upgradeLevel: -1
   downgradeLevel: 3
 --- !u!50 &8218885677694111684
