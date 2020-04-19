@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,7 +37,10 @@ public class GameManager : MonoBehaviour
 
     private bool isWinning;
     private bool isLosing;
+    private bool isStarting;
+    private bool isEnding;
 
+    private float fadeTime;
     private void Awake()
     {
         if (instance == null)
@@ -54,9 +58,55 @@ public class GameManager : MonoBehaviour
         Instantiate(levels[level - 1], Vector3.zero, Quaternion.identity);
         isWinning = false;
         AstarPath.active.Scan();
-        isRunning = true;
+        isStarting = true;
+        fadeTime = Time.time + 1f;
     }
 
+    private void Update()
+    {
+        if (isStarting)
+        {
+            Color coverColor = Color.Lerp(Color.clear, Color.black, fadeTime - Time.time);
+            GameObject.FindGameObjectWithTag("UICover").GetComponent<Image>().color = coverColor;
+            if (Time.time > fadeTime)
+            {
+                GameObject.FindGameObjectWithTag("UICover").GetComponent<Image>().color = Color.clear;
+                isStarting = false;
+                isRunning = true;
+            }
+        }
+        if (isEnding)
+        {
+            Color coverColor = Color.Lerp(Color.black, Color.clear, fadeTime - Time.time);
+            GameObject.FindGameObjectWithTag("UICover").GetComponent<Image>().color = coverColor;
+            if (Time.time > fadeTime)
+            {
+                GameObject.FindGameObjectWithTag("UICover").GetComponent<Image>().color = Color.black;
+                isEnding = false;
+                if (isWinning)
+                {
+                    if (level > levels.Length)
+                    {
+                        Debug.Log("You win!");
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("Main");
+                    }
+                } else if (isLosing)
+                {
+                    if (mans < 0)
+                    {
+                        Debug.Log("You lose!");
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("Main");
+                    }
+                }
+            }
+        }
+    }
     public void RemovePower(int power)
     {
         discoPower -= power;
@@ -114,14 +164,9 @@ public class GameManager : MonoBehaviour
             AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.levelClearSound);
             isWinning = true;
             isRunning = false;
+            isEnding = true;
             level++;
-            if (level > levels.Length)
-            {
-                Debug.Log("You win!");
-            } else
-            {
-                SceneManager.LoadScene("Main");
-            }
+            fadeTime = Time.time + 1f;
 
         }
     }
@@ -129,6 +174,10 @@ public class GameManager : MonoBehaviour
     public void Lose()
     {
         isRunning = false;
+        isLosing = true;
+        isEnding = true;
+        mans--;
         AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.playerLoseSound);
+        fadeTime = Time.time + 1f;
     }
 }

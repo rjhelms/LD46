@@ -16,6 +16,9 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DiscoPowerText.text = GameManager.instance.DiscoPower.ToString();
+        if (GameManager.instance.IsRunning)
+        {
+            DiscoPowerText.text = GameManager.instance.DiscoPower.ToString();
+        }
     }
 }

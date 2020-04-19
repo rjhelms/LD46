@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - Friendly
   - Terrain
+  - UICamera
+  - UICover
   layers:
   - Default
   - TransparentFX

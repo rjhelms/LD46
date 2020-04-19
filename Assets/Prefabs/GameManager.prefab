@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - {fileID: 1530319779942931874, guid: 0ed312f9308c2f84da0d040be58e9607, type: 3}
+  - {fileID: 8088374910586587329, guid: 923b1b51f8cbac546825fff4a0a3df80, type: 3}
   discoPower: 100
   mans: 0
   score: 0
