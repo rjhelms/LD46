@@ -1,26 +1,42 @@
+TO DO
+
+- NPC collide: get new direction
+- powerups
+- terrain assets
+- balance tweaks
+- sounds
+- music
+- UI
+- levels & control flow
+- title screen etc
+
+
+
+
 setting:
 the year is 1988. people say disco is dead. prove them wrong with DISCO POWER
 spread the word of disco with your sweet dance moves
 
-procedurally generated nightclubs???
+procedurally generated nightclubs??? (probably not)
 
 player - disco man!
 
+--------------------------------------
 
 three tiers of NPCs
 - punk
 - dorks
-- disco fans.... ???
-
+- freaks
 
 player moves:
 - dance - sends out music notes in 4 / 8 directions
-	- turn dorks into disco fans
-	- stuns punks
+	- turn dorks into freaks
+	- stuns punks (not done - should I?)
 	- drains disco power
 	
-... something for punks
-
+- attack - throw wine
+	- turns punks into dorks
+	- drains disco power
 
 enemy moves:
 dorks - throw classical records - something less ambiguous? calculators? slide rules?
@@ -29,9 +45,23 @@ dorks - throw classical records - something less ambiguous? calculators? slide r
 	
 punks - throw whisky bottles
 	hit player - drain disco power more
+	hit freaks - terns into 
 	hit dorks - turn to punks
+
+freaks - also dance
+	- small power boost to player
+	- turns dorks into freaks
 	
 powerups:
 - cocktail - get at bar
 	- increases disco power
 - one up of some sort
+
+projectiles:
+- player music
+- player wine
+- npc music
+- dork classical record
+- punk whisky bottle
+
+
