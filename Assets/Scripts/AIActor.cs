@@ -60,7 +60,7 @@ public class AIActor : Actor
         seeker = GetComponent<Seeker>();
         seeker.pathCallback += OnPathComplete;
         nextSearchPathTime = Time.time + (1 / searchPathFrequency);
-        endSpawnGraceTime = Time.time + endSpawnGraceTime;
+        endSpawnGraceTime = Time.time + spawnGraceTime;
     }
 
     protected virtual void OnDisable()

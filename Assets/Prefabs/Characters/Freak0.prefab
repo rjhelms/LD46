@@ -184,6 +184,7 @@ MonoBehaviour:
   nextWaypointDistance: 16
   searchPathChance: 0.5
   searchPathFrequency: 2
+  spawnGraceTime: 0.5
 --- !u!50 &8885962546537177205
 Rigidbody2D:
   serializedVersion: 4
