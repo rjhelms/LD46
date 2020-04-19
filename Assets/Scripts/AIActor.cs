@@ -45,6 +45,8 @@ public class AIActor : Actor
     protected Seeker seeker;
     protected Path path;
 
+    protected bool isChanged = false;
+
     protected float nextSearchPathTime;
     protected override void Start()
     {
@@ -173,6 +175,9 @@ public class AIActor : Actor
     {
         if (upgradeGameObject)
         {
+            if (isChanged)
+                return;
+            isChanged = true;
             Instantiate(upgradeGameObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
             // TODO: play upgrade sound
@@ -183,6 +188,9 @@ public class AIActor : Actor
     {
         if (downgradeGameObject)
         {
+            if (isChanged)
+                return;
+            isChanged = true;
             Instantiate(downgradeGameObject, transform.position, Quaternion.identity);
             Destroy(gameObject);
             // TODO: play downgrade sound
