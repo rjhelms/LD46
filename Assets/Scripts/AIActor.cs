@@ -106,7 +106,6 @@ public class AIActor : Actor
             }
             else
             {
-                Debug.Log("Reached end of path!");
                 path = null;
                 moveVector = Vector2.zero;
             }
@@ -150,7 +149,6 @@ public class AIActor : Actor
     {
         base.DoDance();
         nextActionTime = Time.time + danceTimeout;
-        Debug.Log("dancing");
     }
 
     protected override void DoAttack()
@@ -158,7 +156,6 @@ public class AIActor : Actor
         base.DoAttack();
         nextActionTime = Time.time + (1 / (actionFrequency * Random.Range(1 - actionFrequencyVariance, 1 + actionFrequencyVariance)));
         nextActionTime += attackTimeout;
-        Debug.Log("attacking");
     }
 
     protected virtual void OnPathComplete(Path p)
