@@ -97,12 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 415c8e7e7cfb59047bb25985ee06e517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 5
+  lifespan: 3
   speed: 50
   baseMoveVector: {x: 0, y: 0}
   currentMoveVector: {x: 0, y: 0}
   moveRandomness: 0.8
   moveRandomInterval: 0.2
+  spin: 0
+  spinFrequency: 0
   upgradeLevel: 2
   downgradeLevel: -1
 --- !u!50 &5607060341421939811

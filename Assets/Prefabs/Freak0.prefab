@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  moveSpeed: 40
+  moveSpeed: 70
   moveVector: {x: 0, y: 0}
   frameTime:
   - 0
@@ -174,7 +174,7 @@ MonoBehaviour:
     type: 3}
   danceChance: 0.75
   attackChance: 0
-  actionFrequency: 0.2
+  actionFrequency: 0.1
   actionFrequencyVariance: 0.1
   canDance: 1
   canAttack: 0

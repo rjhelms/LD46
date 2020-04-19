@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  moveSpeed: 40
+  moveSpeed: 75
   moveVector: {x: 0, y: 0}
   frameTime:
   - 0
