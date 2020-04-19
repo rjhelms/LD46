@@ -6,7 +6,6 @@ public class Freak : AIActor
 {
     protected override void Update()
     {
-        base.Update();
         if (state == ActorState.IDLE & path == null & waitingForPath == false)
         {
             Vector2 targetPosition = (Vector2)transform.position + (Random.insideUnitCircle.normalized * randomPathDistance);
@@ -56,5 +55,6 @@ public class Freak : AIActor
                 state = ActorState.WALK;
             }
         }
+        base.Update();
     }
 }
