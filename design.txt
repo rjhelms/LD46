@@ -1,19 +1,22 @@
 TO DO
-- powerups - spawnpoint (bar?)
-- terrain assets
+
 - balance tweaks
 	- NPC convert grace period
 	- improve projectile destruction
 - sounds
 - music
 - UI
+	- be sure to fix scaling
 - levels & control flow
 - other NPC skins
 - title screen etc
+- terrain assets (more)
 
 DONE
 - NPC collide: get new direction
 - powerups - create
+- powerups - spawnpoint (bar?)
+- terrain assets (enough)
 
 --------------------------------------
 
