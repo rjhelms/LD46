@@ -178,6 +178,8 @@ MonoBehaviour:
   waitingForPath: 0
   reachedEndOfPath: 0
   nextWaypointDistance: 16
+  searchPathChance: 0.5
+  searchPathFrequency: 2
 --- !u!50 &8885962546537177205
 Rigidbody2D:
   serializedVersion: 4

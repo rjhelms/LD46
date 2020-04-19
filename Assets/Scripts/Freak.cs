@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class Freak : AIActor
 {
+    [SerializeField]
+    protected float searchPathChance;
+    [SerializeField]
+    protected float searchPathFrequency;
+    protected float nextSearchPathTime;
+
+    protected override void Start()
+    {
+        base.Start();
+        nextSearchPathTime = Time.time + (1 / searchPathFrequency);
+    }
     protected override void Update()
     {
-        if (state == ActorState.IDLE & path == null & waitingForPath == false)
+        if (Time.time > nextSearchPathTime & state == ActorState.IDLE & path == null & waitingForPath == false)
         {
-            Vector2 targetPosition = (Vector2)transform.position + (Random.insideUnitCircle.normalized * randomPathDistance);
-            seeker.StartPath((Vector2)transform.position, targetPosition);
+            nextSearchPathTime = Time.time + (1 / searchPathFrequency);
+            if (Random.value < searchPathChance)
+            {
+                Vector2 targetPosition = (Vector2)transform.position + (Random.insideUnitCircle.normalized * randomPathDistance);
+                seeker.StartPath((Vector2)transform.position, targetPosition);
+            }
         }
         if (path != null & (state == ActorState.IDLE | state == ActorState.WALK))
         {
