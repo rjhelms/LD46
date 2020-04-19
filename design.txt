@@ -1,17 +1,21 @@
 TO DO
 
-- NPC collide: get new direction
-- powerups
+- powerups - spawnpoint (bar?)
+
 - terrain assets
 - balance tweaks
 - sounds
 - music
 - UI
 - levels & control flow
+- other NPC skins
 - title screen etc
 
+DONE
+- NPC collide: get new direction
+- powerups - create
 
-
+--------------------------------------
 
 setting:
 the year is 1988. people say disco is dead. prove them wrong with DISCO POWER
