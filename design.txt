@@ -1,7 +1,6 @@
 TO DO
 
 - balance tweaks
-	- NPC convert grace period
 	- improve projectile destruction
 - sounds
 - music
@@ -17,6 +16,7 @@ DONE
 - powerups - create
 - powerups - spawnpoint (bar?)
 - terrain assets (enough)
+- NPC convert grace period
 
 --------------------------------------
 

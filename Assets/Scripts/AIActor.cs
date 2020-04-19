@@ -40,6 +40,9 @@ public class AIActor : Actor
     [SerializeField]
     protected float searchPathFrequency;
 
+    [SerializeField]
+    protected float spawnGraceTime = 0.5f;
+
     protected int currentWaypoint = 0;
     protected float nextActionTime;
     protected Seeker seeker;
@@ -48,6 +51,8 @@ public class AIActor : Actor
     protected bool isChanged = false;
 
     protected float nextSearchPathTime;
+    protected float endSpawnGraceTime;
+
     protected override void Start()
     {
         base.Start();
@@ -55,6 +60,7 @@ public class AIActor : Actor
         seeker = GetComponent<Seeker>();
         seeker.pathCallback += OnPathComplete;
         nextSearchPathTime = Time.time + (1 / searchPathFrequency);
+        endSpawnGraceTime = Time.time + endSpawnGraceTime;
     }
 
     protected virtual void OnDisable()
@@ -170,7 +176,7 @@ public class AIActor : Actor
 
     public virtual void Upgrade()
     {
-        if (upgradeGameObject)
+        if (upgradeGameObject & Time.time > endSpawnGraceTime)
         {
             if (isChanged)
                 return;
@@ -183,7 +189,7 @@ public class AIActor : Actor
 
     public virtual void Downgrade()
     {
-        if (downgradeGameObject)
+        if (downgradeGameObject & Time.time > endSpawnGraceTime)
         {
             if (isChanged)
                 return;
