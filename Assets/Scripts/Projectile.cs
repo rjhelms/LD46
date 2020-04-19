@@ -16,6 +16,13 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private float moveRandomInterval;
 
+    private GameObject sourceObject;
+
+    [SerializeField]
+    private int upgradeLevel = -1;      // -1 means nothing
+    [SerializeField]
+    private int downgradeLevel = -1;    // -1 means nothing
+
     private float nextRandomInterval;
     private float lifespanEnd;
     private new Rigidbody2D rigidbody2D;
@@ -24,6 +31,12 @@ public class Projectile : MonoBehaviour
     {
         baseMoveVector = newVector.normalized;
     }
+
+    public void SetSourceObject(GameObject source)
+    {
+        sourceObject = source;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +67,27 @@ public class Projectile : MonoBehaviour
         }
 
         rigidbody2D.velocity = currentMoveVector * speed;
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == sourceObject)
+        {
+            return;
+        }
+
+        AIActor actor = collision.GetComponent<AIActor>();
+        if (actor)
+        {
+            if (actor.AILevel == upgradeLevel)
+            {
+                actor.Upgrade();
+                Destroy(gameObject);
+            } else if (actor.AILevel == downgradeLevel)
+            {
+                actor.Downgrade();
+                Destroy(gameObject);
+            }
+        }
     }
 }

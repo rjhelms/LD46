@@ -69,12 +69,16 @@ public class PlayerController : Actor
             Projectile newProjectile;
             newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
             newProjectile.SetBaseVector(Vector2.up);
+            newProjectile.SetSourceObject(gameObject);
             newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
             newProjectile.SetBaseVector(Vector2.left);
+            newProjectile.SetSourceObject(gameObject);
             newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
             newProjectile.SetBaseVector(Vector2.right);
+            newProjectile.SetSourceObject(gameObject);
             newProjectile = Instantiate(danceProjectilePrefab, projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
             newProjectile.SetBaseVector(Vector2.down);
+            newProjectile.SetSourceObject(gameObject);
             GameManager.instance.RemovePower(danceCost);
             // TODO: dance sound
         }
