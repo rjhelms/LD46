@@ -57,7 +57,7 @@ public class AIActor : Actor
         nextSearchPathTime = Time.time + (1 / searchPathFrequency);
     }
 
-    protected void OnDisable()
+    protected virtual void OnDisable()
     {
         seeker.pathCallback -= OnPathComplete;
     }

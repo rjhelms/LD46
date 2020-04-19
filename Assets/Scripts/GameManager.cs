@@ -12,7 +12,13 @@ public class GameManager : MonoBehaviour
     private int mans;
     [SerializeField]
     private int score;
-    
+
+    [SerializeField]
+    private int punks;
+
+    [SerializeField]
+    private int dorks;
+
     public int DiscoPower { get => discoPower; }
     public int Mans { get => mans; }
     public int Score { get => score; }
@@ -56,5 +62,27 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreUp)
     {
         score += scoreUp;
+    }
+
+    public void RegisterPunk()
+    {
+        punks++;
+    }
+
+    public void RemovePunk()
+    {
+        if (punks > 0)
+            punks--;
+    }
+
+    public void RegisterDork()
+    {
+        dorks++;
+    }
+
+    public void RemoveDork()
+    {
+        if (dorks > 0)
+            dorks--;
     }
 }
