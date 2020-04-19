@@ -173,7 +173,7 @@ MonoBehaviour:
     type: 3}
   projectileSpawnPoint: {fileID: 34872535}
   danceCost: 5
-  attackCost: 0
+  attackCost: 10
 --- !u!50 &5210932496059701442
 Rigidbody2D:
   serializedVersion: 4

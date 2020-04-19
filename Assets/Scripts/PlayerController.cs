@@ -48,13 +48,18 @@ public class PlayerController : Actor
 
         if (Input.GetButton("Fire2"))
         {
-            state = ActorState.ATTACK;
-            stateTimeoutTime = Time.time + attackTimeout;
-            moveVector = Vector2.zero;
-            nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.ATTACK]);
-            frameIndex = 0;
-            FireAttackProjectiles();
-            return;
+            if (GameManager.instance.DiscoPower > attackCost)
+            {
+                state = ActorState.ATTACK;
+                stateTimeoutTime = Time.time + attackTimeout;
+                moveVector = Vector2.zero;
+                nextFrameTime = Time.time + (1 / frameTime[(int)ActorState.ATTACK]);
+                frameIndex = 0;
+                FireAttackProjectiles();
+                GameManager.instance.RemovePower(attackCost);
+                return;
+            }
+            // TODO: attack fizzle sound
         }
 
         Vector2 inputVector = Vector2.zero;
