@@ -25,6 +25,10 @@ public class FollowCamera : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
         if (target)
         {
             Vector3 posNoZ = transform.position;
