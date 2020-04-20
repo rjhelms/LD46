@@ -190,6 +190,7 @@ public class AIActor : Actor
                 AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.upgradeSound);
             }
             Instantiate(upgradeGameObject, transform.position, Quaternion.identity);
+            GameManager.instance.AddScore(1000);
             Destroy(gameObject);
         }
     }
@@ -206,6 +207,7 @@ public class AIActor : Actor
                 AudioManager.instance.soundSource.PlayOneShot(AudioManager.instance.downgradeSound);
             }
             Instantiate(downgradeGameObject, transform.position, Quaternion.identity);
+            GameManager.instance.AddScore(-250);
             Destroy(gameObject);
         }
     }

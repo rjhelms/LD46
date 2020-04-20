@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
                     if (level > levels.Length)
                     {
                         Debug.Log("You win!");
+                        SceneManager.LoadScene("WinScene");
                     }
                     else
                     {
@@ -98,9 +99,11 @@ public class GameManager : MonoBehaviour
                     if (mans < 0)
                     {
                         Debug.Log("You lose!");
+                        SceneManager.LoadScene("LoseScene");
                     }
                     else
                     {
+                        discoPower = 100;
                         SceneManager.LoadScene("Main");
                     }
                 }

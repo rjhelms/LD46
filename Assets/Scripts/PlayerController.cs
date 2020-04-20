@@ -65,7 +65,7 @@ public class PlayerController : Actor
     
     void DoInput()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Dance"))
         {
             state = ActorState.DANCE;
             stateTimeoutTime = Time.time + danceTimeout;
@@ -76,7 +76,7 @@ public class PlayerController : Actor
             return;
         }
 
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Throw"))
         {
             if (GameManager.instance.DiscoPower > attackCost)
             {
