@@ -420,7 +420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press ESCAPE to quit, or anyo ther key to play again.
+  m_Text: Press ESCAPE to quit, or any other key to play again.
 --- !u!222 &718520436
 CanvasRenderer:
   m_ObjectHideFlags: 0
