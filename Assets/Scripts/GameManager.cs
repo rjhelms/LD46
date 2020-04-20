@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private bool isEnding;
 
     private float fadeTime;
+
     private void Awake()
     {
         if (instance == null)
@@ -57,11 +58,14 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(levels[level - 1], Vector3.zero, Quaternion.identity);
         isWinning = false;
-        AstarPath.active.Scan();
         isStarting = true;
         fadeTime = Time.time + 1f;
     }
 
+    private void Start()
+    {
+        AstarPath.active.Scan();
+    }
     private void Update()
     {
         if (isStarting)
