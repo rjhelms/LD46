@@ -381,30 +381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1699957172, guid: 87612e81e9120d245947a1efed3bafca, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451931133640649170, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 451931133640649170, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_Text
-      value: 'LIVES: 3'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2603284566844002864, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2603284566844002864, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6831409972540433240, guid: 87612e81e9120d245947a1efed3bafca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -459,31 +435,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831409972540433241, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: orthographic size
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831409972540433241, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: 0.2799634
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831409972540433241, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
-      value: 0.17391305
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831409972540433241, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.width
-      value: 0.4391583
-      objectReference: {fileID: 0}
-    - target: {fileID: 6831409972540433241, guid: 87612e81e9120d245947a1efed3bafca,
-        type: 3}
-      propertyPath: m_NormalizedViewPortRect.height
-      value: 0.65217394
       objectReference: {fileID: 0}
     - target: {fileID: 6831409972540433244, guid: 87612e81e9120d245947a1efed3bafca,
         type: 3}
@@ -567,22 +518,22 @@ PrefabInstance:
     - target: {fileID: 7472189429119550957, guid: 3e172ef889d5b8a40a6642a1d997a53b,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.2799634
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7472189429119550957, guid: 3e172ef889d5b8a40a6642a1d997a53b,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.17391305
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7472189429119550957, guid: 3e172ef889d5b8a40a6642a1d997a53b,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.4391583
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7472189429119550957, guid: 3e172ef889d5b8a40a6642a1d997a53b,
         type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.65217394
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7472189429119550957, guid: 3e172ef889d5b8a40a6642a1d997a53b,
         type: 3}

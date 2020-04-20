@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 3
-  speed: 120
+  speed: 145
   baseMoveVector: {x: 0, y: 0}
   currentMoveVector: {x: 0, y: 0}
   moveRandomness: 0

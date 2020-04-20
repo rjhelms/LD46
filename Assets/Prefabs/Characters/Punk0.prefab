@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  moveSpeed: 100
+  moveSpeed: 120
   moveVector: {x: 0, y: 0}
   frameTime:
   - 0
@@ -175,8 +175,8 @@ MonoBehaviour:
     type: 3}
   downgradeGameObject: {fileID: 0}
   danceChance: 0
-  attackChance: 0.3
-  actionFrequency: 1.5
+  attackChance: 0.4
+  actionFrequency: 1.75
   actionFrequencyVariance: 0.1
   canDance: 0
   canAttack: 1
