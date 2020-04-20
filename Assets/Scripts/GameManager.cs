@@ -66,8 +66,14 @@ public class GameManager : MonoBehaviour
     {
         AstarPath.active.Scan();
     }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if (isStarting)
         {
             Color coverColor = Color.Lerp(Color.clear, Color.black, fadeTime - Time.time);
