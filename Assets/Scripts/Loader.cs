@@ -19,4 +19,9 @@ public class Loader : MonoBehaviour
         }
         GameManager.instance.InstantiateLevel();
     }
+
+    private void Start()
+    {
+        AstarPath.active.Scan();
+    }
 }

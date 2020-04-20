@@ -62,11 +62,6 @@ public class GameManager : MonoBehaviour
         fadeTime = Time.time + 1f;
     }
 
-    private void Start()
-    {
-        AstarPath.active.Scan();
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
